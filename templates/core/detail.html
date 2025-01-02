@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<h1>Detail</h1>
+
+
+<div class="alert alert-dark" role="alert">
+    <strong>{{p.id}}</strong> 
+    {{p.user}}
+    <strong>
+        <a href="" class="text-dark p-5">{{p.text}}</a>
+    </strong>
+</div>
+
+<a href="" class="text-dark">いいねする</a>
+<a href="" class="text-dark">編集する</a>
+<a href="" class="text-dark">削除する</a>
+
+{% endblock content %}
+    

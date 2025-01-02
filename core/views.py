@@ -26,3 +26,11 @@ def create(request):
         'form': form,
     }
     return render(request,'core/create.html',context)
+
+def detail(request,pk):
+    post=Post.objects.get(pk=pk)
+    
+    context={
+        'p': post,
+    }
+    return render(request,'core/detail.html',context)

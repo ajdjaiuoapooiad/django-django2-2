@@ -11,7 +11,7 @@
     <strong>{{p.id}}</strong> 
     {{p.user}}
     <strong>
-        <a href="" class="text-dark p-5">{{p.text}}</a>
+        <a href="{% url 'detail' p.id %}" class="text-dark p-5">{{p.text}}</a>
     </strong>
 </div>
 {% endfor %}
