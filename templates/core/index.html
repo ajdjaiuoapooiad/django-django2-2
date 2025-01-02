@@ -3,9 +3,18 @@
 
 {% block content %}
 
-
-  
-   
 <h1>Index</h1>
+
+
+{% for p in posts %}
+<div class="alert alert-dark" role="alert">
+    <strong>{{p.id}}</strong> 
+    {{p.user}}
+    <strong>
+        <a href="" class="text-dark p-5">{{p.text}}</a>
+    </strong>
+</div>
+{% endfor %}
+
 {% endblock content %}
     
