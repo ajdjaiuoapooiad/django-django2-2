@@ -64,8 +64,11 @@ def delete(request,pk):
 def like(request,pk):
         user=request.user
         post=Post.objects.get(pk=pk)
-        like=Like(user=user,post=post)
-        like.save()
+        like=Like.objects.filter(user=user,post=post)
+        if like.exists():
+            like.delete()
+        else:
+            like.create(user=user,post=post)
     
         return redirect('index')
     
