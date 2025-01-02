@@ -34,3 +34,19 @@ def detail(request,pk):
         'p': post,
     }
     return render(request,'core/detail.html',context)
+
+def update(request,pk):
+    post=Post.objects.get(pk=pk)
+    form=CreateForm(instance=post)
+    if request.method == 'POST':
+        form=CreateForm(request.POST,instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form=CreateForm(instance=post)
+        
+    context={
+        'form': form,
+    }
+    return render(request,'core/update.html',context)
