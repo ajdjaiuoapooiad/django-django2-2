@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import redirect, render
 
 from core.forms import CreateForm
@@ -30,8 +31,11 @@ def create(request):
 def detail(request,pk):
     post=Post.objects.get(pk=pk)
     
+    like_count=Like.objects.filter(post=post).count()
+        
     context={
         'p': post,
+        'like_count': like_count,
     }
     return render(request,'core/detail.html',context)
 
@@ -62,6 +66,7 @@ def like(request,pk):
         post=Post.objects.get(pk=pk)
         like=Like(user=user,post=post)
         like.save()
+    
         return redirect('index')
     
      
