@@ -50,3 +50,9 @@ def update(request,pk):
         'form': form,
     }
     return render(request,'core/update.html',context)
+
+
+def delete(request,pk):
+    post=Post.objects.get(pk=pk)
+    post.delete()
+    return redirect('index')
