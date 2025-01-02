@@ -9,4 +9,7 @@ urlpatterns = [
     path('post/<int:pk>',views.detail,name='detail'),
     path('update/<int:pk>',views.update,name='update'),
     path('delete/<int:pk>',views.delete,name='delete'),
+    
+    # 
+    path('like/<int:pk>',views.like,name='like'),
 ]

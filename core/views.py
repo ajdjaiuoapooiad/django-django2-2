@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 
 from core.forms import CreateForm
-from core.models import Post
+from core.models import Like, Post
 
 
 def index(request):
@@ -56,3 +56,12 @@ def delete(request,pk):
     post=Post.objects.get(pk=pk)
     post.delete()
     return redirect('index')
+
+def like(request,pk):
+        user=request.user
+        post=Post.objects.get(pk=pk)
+        like=Like(user=user,post=post)
+        like.save()
+        return redirect('index')
+    
+     
