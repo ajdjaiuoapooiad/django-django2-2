@@ -74,7 +74,7 @@ def like(request,pk):
         else:
             like.create(user=user,post=post)
     
-        return redirect('index')
+        return redirect('detail',post.id)
     
 def comment(request,pk):
     post=Post.objects.get(pk=pk)
