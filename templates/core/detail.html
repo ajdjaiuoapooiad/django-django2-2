@@ -24,13 +24,15 @@
     </strong>
 </div>
 
-{% if %}
+{% if like %}
 <a href="{% url 'like' p.id %}" class="text-dark">
     <span class="material-icons">favorite</span>{{like_count}}
 </a>
+{% else %}
 <a href="{% url 'like' p.id %}" class="text-dark">
     <span class="material-symbols-outlined">favorite</span>{{like_count}}
 </a>
+{% endif %}
 
 <a href="{% url 'update' p.id %}" class="text-dark">編集する</a>
 <a href="{% url 'delete' p.id %}" class="text-dark">削除する</a>

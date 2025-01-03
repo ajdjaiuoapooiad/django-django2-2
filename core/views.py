@@ -30,6 +30,7 @@ def create(request):
 
 def detail(request,pk):
     post=Post.objects.get(pk=pk)
+    like=Like.objects.filter(user=request.user,post=post)
     like_count=Like.objects.filter(post=post).count()
     comments=Comment.objects.filter(post=post)
         
@@ -38,6 +39,7 @@ def detail(request,pk):
         'p': post,
         'like_count': like_count,
         'comments': comments,
+        'like': like,
     }
     return render(request,'core/detail.html',context)
 
