@@ -12,4 +12,5 @@ urlpatterns = [
     
     # 
     path('like/<int:pk>',views.like,name='like'),
+    path('comment/create/<int:pk>',views.comment,name='comment'),
 ]

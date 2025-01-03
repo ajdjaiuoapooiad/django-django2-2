@@ -17,6 +17,7 @@
 <a href="{% url 'like' p.id %}" class="text-dark">いいねする{{like_count}}</a>
 <a href="{% url 'update' p.id %}" class="text-dark">編集する</a>
 <a href="{% url 'delete' p.id %}" class="text-dark">削除する</a>
+<a href="{% url 'comment' p.id %}" class="text-dark">コメントする</a>
 
 {% endblock content %}
     

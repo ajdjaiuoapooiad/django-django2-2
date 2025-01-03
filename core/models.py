@@ -15,3 +15,11 @@ class Like(models.Model):
      
     def __str__(self):
         return self.post.text
+
+class Comment(models.Model):
+    user=models.ForeignKey(User,on_delete=models.CASCADE)
+    post=models.ForeignKey(Post,on_delete=models.CASCADE)
+    text=models.TextField(max_length=300)
+     
+    def __str__(self):
+        return self.text

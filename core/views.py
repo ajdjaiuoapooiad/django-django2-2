@@ -1,7 +1,7 @@
 from multiprocessing import context
 from django.shortcuts import redirect, render
 
-from core.forms import CreateForm
+from core.forms import CommentForm, CreateForm
 from core.models import Like, Post
 
 
@@ -30,8 +30,8 @@ def create(request):
 
 def detail(request,pk):
     post=Post.objects.get(pk=pk)
-    
     like_count=Like.objects.filter(post=post).count()
+        
         
     context={
         'p': post,
@@ -72,4 +72,24 @@ def like(request,pk):
     
         return redirect('index')
     
-     
+def comment(request,pk):
+    post=Post.objects.get(pk=pk)
+    
+    if request.method == 'POST':
+        form=CommentForm(request.POST)
+        if form.is_valid():
+            comment=form.save(commit=False)
+            comment.user=request.user
+            comment.post=post
+            comment.save()
+            return redirect('index')
+    else:
+        form=CommentForm()
+    
+    context={
+        'form': form,
+    }
+    return render(request,'core/comment.html',context)
+    
+    
+    
