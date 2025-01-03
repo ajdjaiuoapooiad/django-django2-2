@@ -3,10 +3,13 @@
 
 {% block content %}
 
+
+<div class="m-5">
+
+
 <h1>Detail</h1>
 
-
-<div class="alert alert-dark" role="alert">
+<div class="alert alert-dark " role="alert">
     <strong>{{p.id}}</strong> 
     {{p.user}}
     <strong>
@@ -18,6 +21,25 @@
 <a href="{% url 'update' p.id %}" class="text-dark">編集する</a>
 <a href="{% url 'delete' p.id %}" class="text-dark">削除する</a>
 <a href="{% url 'comment' p.id %}" class="text-dark">コメントする</a>
+
+</div>
+
+
+<div class="m-5">
+
+<h1>Comment一覧</h1>
+{% for c in comments %}
+<div class="alert alert-info" role="alert">
+    <strong>{{c.id}}</strong> 
+    {{c.user}}
+    <strong>
+        <a href="" class="text-dark p-5">{{c.text}}</a>
+    </strong>
+</div>
+{% endfor %}
+</div>
+
+
 
 {% endblock content %}
     

@@ -2,7 +2,7 @@ from multiprocessing import context
 from django.shortcuts import redirect, render
 
 from core.forms import CommentForm, CreateForm
-from core.models import Like, Post
+from core.models import Comment, Like, Post
 
 
 def index(request):
@@ -31,11 +31,13 @@ def create(request):
 def detail(request,pk):
     post=Post.objects.get(pk=pk)
     like_count=Like.objects.filter(post=post).count()
+    comments=Comment.objects.filter(post=post)
         
         
     context={
         'p': post,
         'like_count': like_count,
+        'comments': comments,
     }
     return render(request,'core/detail.html',context)
 
