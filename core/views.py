@@ -50,7 +50,7 @@ def update(request,pk):
         form=CreateForm(request.POST,instance=post)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('detail',post.id)
     else:
         form=CreateForm(instance=post)
         
@@ -86,7 +86,7 @@ def comment(request,pk):
             comment.user=request.user
             comment.post=post
             comment.save()
-            return redirect('index')
+            return redirect('detail',post.id)
     else:
         form=CommentForm()
     
